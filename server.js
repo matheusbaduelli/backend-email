@@ -12,15 +12,17 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.get("/hello", (req, res) => {
-    res.json({ message: "Hello World" });
+    res.send("Hello World");
   });
   
 
-app.post('/enviar-email', async (req, res) => {
+app.get('/enviar-email', async (req, res) => {
     // const { email, frase } = req.body;
-
+    
     const email = req.query.email;
     const frase = req.query.frase;
+
+    res.send(`Olá, ${email}. Sua idade é ${frase} ${process.env.PORT}`);
 
     if (!email || !frase) {
         return res.status(400).json({ error: 'E-mail e frase são obrigatórios.' });
