@@ -11,6 +11,11 @@ const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get("/hello", (req, res) => {
+    res.json({ message: "Hello World" });
+  });
+  
+
 app.post('/enviar-email', async (req, res) => {
     const { email, frase } = req.body;
 
