@@ -17,7 +17,10 @@ app.get("/hello", (req, res) => {
   
 
 app.post('/enviar-email', async (req, res) => {
-    const { email, frase } = req.body;
+    // const { email, frase } = req.body;
+
+    const email = req.query.email;
+    const frase = req.query.frase;
 
     if (!email || !frase) {
         return res.status(400).json({ error: 'E-mail e frase são obrigatórios.' });
